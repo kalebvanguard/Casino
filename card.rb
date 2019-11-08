@@ -9,3 +9,10 @@ class Card
     @color = color
   end
  end
+ puts "hello"
+
+class Card
+  def initialize(player)
+    @player = player
+  end
+end
