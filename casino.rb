@@ -1,5 +1,6 @@
 require_relative 'card' #one directory containing all the files
-
+require_relative 'deck'
+require_relative 'dice'
 
 class PlayerBankroll
   attr_accessor :wallet
@@ -50,17 +51,9 @@ class PlayerList
       puts "#{player.name}'s balance is: $#{player.bankroll.wallet}"
     end
   end
-<<<<<<< HEAD
-  
-  
-  class LunchLadyApp < MainMenu 
-  attr_accessor :lunch_menu, :main_root_menu
-  
-=======
 end
 
 class Casino
->>>>>>> 42c4be51396f135a2111ca994780074bce1aa823
   def initialize
     @playersList = PlayerList.new
   end
