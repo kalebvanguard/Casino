@@ -1,7 +1,7 @@
 require_relative 'card' #one directory containing all the files
 
 
-class PlayerBankroll
+class Wallet
   attr_accessor :wallet
 
   def initialize(wallet)
@@ -25,7 +25,7 @@ class Player
     @min_amount = 100
     @max_amount = 300
     start_amount = rand(@min_amount..@max_amount)
-    @bankroll = PlayerBankroll.new(start_amount)
+    @bankroll = Wallet.new(start_amount)
   end
 end
 
@@ -54,7 +54,7 @@ end
 
 class Casino
   def initialize
-    @playersList = PlayerList.new
+    puts ""
   end
 
   def start_casino
