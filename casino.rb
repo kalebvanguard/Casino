@@ -10,7 +10,7 @@
 # Player's bankroll goes up and down with wins and losses
 # Ability to move to and from games
 
-require_relative 'card' 
+require_relative 'rps' 
 require_relative 'deck'
 require_relative 'dice'
 
@@ -90,7 +90,7 @@ class Casino
       selected_player = gets.strip.to_i
       return selected_player - 1
     else
-      return 0
+      return 0 #references @playerList array index
     end
     
   end
@@ -101,10 +101,10 @@ class Casino
       user_game_choice = gets.to_i
       case user_game_choice
       when 1
-        game = Card.new(@playersList.playerList[select_player])
-        # game.start_game()
+        game = RockPaperScissors.new(@playersList.playerList[select_player])
+        game.start_game()
       when 2
-        game = Hi_low.new(@playersList.playerList[select_player])
+        game = Dice.new(@playersList.playerList[select_player])
         game.start_game()
       when 3
         game = Roulette.new(@playersList.playerList[select_player])
@@ -131,3 +131,4 @@ end
 
 casino = Casino.new
 casino.start_casino
+
