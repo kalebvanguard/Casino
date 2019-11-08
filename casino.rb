@@ -1,4 +1,4 @@
-require.relative 'card' #one directory containing all the files 
+require_relative 'card' #one directory containing all the files 
 
 
 
