@@ -28,7 +28,7 @@ class MainMenu
   end
   
   
-  class LunchLadyApp < MainMenu
+  class LunchLadyApp < MainMenu 
   attr_accessor :lunch_menu, :main_root_menu
   
   def initialize
