@@ -1,8 +1,26 @@
+<<<<<<< HEAD
 require_relative 'card' #one directory containing all the files
 require_relative 'deck'
 require_relative 'dice'
+=======
+# Basic Objectives:
 
-class PlayerBankroll
+# Start game player has a name and a wallet
+# Player can go to different games via menu
+# Slots
+# High / Low
+# Use classes to start the casino, bankroll, and each individual game
+# Player places bet and wins / loses (hint: rand)
+# The player should have a Wallet and the Wallet should be its own class with remove and add methods (OOP)
+# Player's bankroll goes up and down with wins and losses
+# Ability to move to and from games
+>>>>>>> 4210f0f0406ab8b8df16b03f0c2f5f72aeb5e937
+
+require_relative 'card' 
+require_relative 'deck'
+require_relative 'dice'
+
+class Wallet
   attr_accessor :wallet
 
   def initialize(wallet)
@@ -26,7 +44,7 @@ class Player
     @min_amount = 100
     @max_amount = 300
     start_amount = rand(@min_amount..@max_amount)
-    @bankroll = PlayerBankroll.new(start_amount)
+    @bankroll = Wallet.new(start_amount)
   end
 end
 
