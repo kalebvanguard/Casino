@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-require_relative 'card' #one directory containing all the files
-require_relative 'deck'
-require_relative 'dice'
-=======
 # Basic Objectives:
 
 # Start game player has a name and a wallet
@@ -14,7 +9,6 @@ require_relative 'dice'
 # The player should have a Wallet and the Wallet should be its own class with remove and add methods (OOP)
 # Player's bankroll goes up and down with wins and losses
 # Ability to move to and from games
->>>>>>> 4210f0f0406ab8b8df16b03f0c2f5f72aeb5e937
 
 require_relative 'card' 
 require_relative 'deck'
@@ -107,7 +101,7 @@ class Casino
       user_game_choice = gets.to_i
       case user_game_choice
       when 1
-        game = Slots_game.new(@playersList.playerList[select_player])
+        game = Card.new(@playersList.playerList[select_player])
         game.start_game()
       when 2
         game = Hi_low.new(@playersList.playerList[select_player])
@@ -127,7 +121,7 @@ class Casino
     @playersList.list_wallet
     puts "What Game would you like to play?"
     puts "\n"
-    puts "1) Slot"
+    puts "1) card"
     puts "2) Highs / Lows"
     puts "3) Roulette"
     puts "4) New Player"
