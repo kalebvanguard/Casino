@@ -36,7 +36,7 @@ class Player
   def initialize(name)
     @name = name
     @min_amount = 100
-    @max_amount = 300
+    @max_amount = 1000000
     start_amount = rand(@min_amount..@max_amount)
     @bankroll = Wallet.new(start_amount)
   end
@@ -121,7 +121,11 @@ class Casino
     @playersList.list_wallet
     puts "What Game would you like to play?"
     puts "\n"
+<<<<<<< HEAD
     puts "1) card"
+=======
+    puts "1) Card"
+>>>>>>> 228c4996d1044874c6119ae6732431b02957ef7b
     puts "2) Highs / Lows"
     puts "3) Roulette"
     puts "4) New Player"
@@ -130,4 +134,9 @@ class Casino
 end
 
 casino = Casino.new
+<<<<<<< HEAD
 casino.start_casino
+=======
+casino.start_casino
+
+>>>>>>> 228c4996d1044874c6119ae6732431b02957ef7b
