@@ -21,8 +21,8 @@ class Player
 
   def initialize(name)
     @name = name
-    @min_amount = 100
-    @max_amount = 1000
+    @min_amount = 1
+    @max_amount = 10000
     start_amount = rand(@min_amount..@max_amount)
     @bankroll = Wallet.new(start_amount)
   end
@@ -73,9 +73,16 @@ class Casino
   end
 
   def start_casino
-    puts "||...........................||"
-    puts "||   WELCOME TO THE CASINO   ||"
-    puts "||...........................||"
+    puts
+    puts
+    puts
+    puts "||                           ...........................                          ||"
+    puts "||................................................................................||"
+    puts "||................................................................................||"
+    puts "||                              WELCOME TO THE CASINO                             ||"
+    puts "||................................................................................||"
+    puts "||................................................................................||"
+    puts "||                           ...........................                          ||"
     puts 
     new_player
     welcome_method
@@ -140,18 +147,28 @@ class Casino
   end
 
   def menu_options
-    @playersList.list_wallet
-    puts "........................"
-    puts "....CASINO MAIN LOBY...."
-    puts "........................"
     puts
-    puts "What Game would you like to play?"
+    puts
+    puts "  .............                                                      ............."
+    puts "  ................................................................................"
+    puts "  ................................................................................"
+    puts "  .............               *** CASINO MAIN LOBY ***               ............."
+    puts "  ................................................................................"
+    puts "  ................................................................................"
+    puts "  .............                                                      ............."
+   @playersList.list_wallet 
     puts 
-    puts "1) Rock Paper Scissors"
-    puts "2) Tet"
-    puts "3) Roulette"
-    puts "4) New Player"
-    puts "5) Quit"
+    puts "                         What Game would you like to play?                          "
+    puts 
+    puts "                             1) Rock Paper Scissors"
+    puts
+    puts "                             2) Tet"
+    puts
+    puts "                             3) Roulette"
+    puts
+    puts "                             4) New Player"
+    puts
+    puts "                             5) Leave the Casino"
   end
 
   def random_event
@@ -160,7 +177,7 @@ class Casino
     when 1, 2, 3 
       puts
     when 4, 5
-      puts "You got robbed by a stripper!! (lose $50)"
+      puts "You got robbed by a stripper!! (lose $50)" #I freaking love this
       @current_player.bankroll.minus_from_wallet(50)
     when 6
       puts "A drunk lottery winner is feeling generous! (win $300)"
