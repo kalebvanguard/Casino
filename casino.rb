@@ -44,13 +44,13 @@ end
 
 class PlayerList
   attr_accessor :playerList
-  def initialize()
+  def initialize
     @playerList = []
   end
   def addPlayer(player)
     @playerList.push(player)
   end
-  def list_players()
+  def list_players
     id = 1
     @playerList.each do |player|
       print "#{id}) "
@@ -76,6 +76,13 @@ class Casino
     welcome_method
   end
 
+  # def return_to_casino
+  #   puts "Welcome back to the Casino!"
+  #   access_player = PlayerList.new
+  #   welcome_method
+  # end
+  # <<<this doesn't really work
+
   def new_player
     puts "Please input a player name: "
     player_name = gets.strip.to_s
@@ -86,13 +93,13 @@ class Casino
   def select_player
     if @playersList.playerList.length > 1
       puts "Which player would like to play?"
-      @playersList.list_players()
+      @playersList.list_players
       selected_player = gets.strip.to_i
-      return selected_player - 1
+      selected_player - 1
     else
-      return 0 #references @playerList array index
+      0 
+      #references @playerList array index
     end
-    
   end
   
   def welcome_method
@@ -102,13 +109,13 @@ class Casino
       case user_game_choice
       when 1
         game = RockPaperScissors.new(@playersList.playerList[select_player])
-        game.start_game()
+        game.start_game
       when 2
         game = Dice.new(@playersList.playerList[select_player])
-        game.start_game()
+        game.start_game
       when 3
         game = Roulette.new(@playersList.playerList[select_player])
-        game.start_game()
+        game.start_game
       when 4
         new_player
       when 5
