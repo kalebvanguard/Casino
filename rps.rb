@@ -1,12 +1,10 @@
-# require_relative "casino"
-
+# require_relative 'casino'
 class RockPaperScissors
   def initialize(player)
     @player = player
     @cost = 100
     @win_amt = 200
     @winnings = 0
-    welcome
   end
 
   def welcome
@@ -16,7 +14,6 @@ class RockPaperScissors
       when "y"
         new_balance = @player.bankroll.minus_from_wallet(@cost)
         puts "Your new balance is: $#{new_balance}"
-        start_game
       else
         exit
       end
@@ -25,6 +22,7 @@ class RockPaperScissors
       exit
     end
   end
+
   def start_game
     puts "Welcome to Rock Paper Scissors, #{@player.name}!"
     puts
@@ -34,12 +32,12 @@ class RockPaperScissors
   end
 
   def choice
-    puts "Make your choice:"
+    puts "FIRST GAME Make your choice:"
+    
     puts "1) Rock"
     puts "2) Paper"
     puts "3) Scissors"
-    # puts "4) Back to main menu"
-    puts "5) Exit"
+    puts "4) Exit"
     puts
     @choice = gets.to_i
     case @choice
@@ -52,13 +50,9 @@ class RockPaperScissors
     when 3
       puts "You chose: Scissors"
       scissors_case
-    # when 4
-    when 5
-      puts "Goodbye!"
-      exit
-    else
-      puts "Try again, (hint: pick a number)"
-      start_game
+    when 4
+      return
+     
     end
     choice
   end
@@ -122,3 +116,4 @@ class RockPaperScissors
   end
 
 end
+

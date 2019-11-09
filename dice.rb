@@ -1,110 +1,144 @@
-
-def separator  
-  puts
+# require_relative "casino"
+def seperator 
+puts
 end
 
 class Dice
-  def initialize(player)
-    @player = player
-  end
-  def start_game()
-    puts
-    menu
-  end
-end
-
-def menu  
-  separator
-  puts "......................................................."
-  puts "....................               ...................."
-  puts "..........................   .........................."
-  puts "..........................   .........................."
-  puts "..........................   .........................."
-  puts "..........................   .........................."
-  puts "......................................................." 
-  separator 
-  answers = ["Dealer says: ...Uh, can you go within 200 yards of a school?" , "Dealer says: BEHOLD! MY POWER!" , "Dealer says: WHAT? Did you expect Decaprio?", "Dealer: ...Uh, I think you're looking for the wrong 8ball", "Dealer says: Why are you like this?", "Dealer SAYS: Alright--look kid-- I don't get paid enough for this.", "Dealer says: Shouldn't you be on Dr Phil or something?",]
-  print answers.sample 
-  separator
-  separator
-  separator
-  puts "1) Step up to the table."
-  separator
-  puts "2) Order a drink."
-  separator
-  puts "3) flee the table."
-  separator 
-  menu_options
-end
-
-def menu_options
-  user_input = gets.strip.to_i 
-  case user_input
-  when 1  
-    roll  "this should inniate the game."
-  when 2 
-    print "*pounds a shot"
-  when 3
-    exit
-  else #Response to a miskeyed stoke or not an existing option
-     answers = ["Dealer: Nah, try typing that again you fat fingered betch.", "Dealer: You know how to type, right? Try again.", "Dealer: I bet someone gets a tax write-off because of you. Try again.", "Dealer: Why are you like this? Try again.", "Dealer: Alright--look kid-- I don't get paid enough for this. Try again." , "Dealer: Shouldn't you be on Dr Phil or something?"]
-     print answers.sample
-    menu
-    separator
-    menu_options
-    tet_game
-  end
-end
-
-class Tet_game
-  def initialize(sides)
-    @sides = sides
-  end
-
-  def generate_die_roll
-    rand(@sides) + 1
-  end
-
-  def roll(number=1)
-    roll_array = []
-    number.times do
-      roll_array << generate_die_roll
+    def initialize(player)
+      @player = player
+      @cost = 100
+      @win_amt = 200
+      @winnings = 0
     end
-    total = 0
-    roll_array.each do |roll|
-      new_total = total + roll
-      total = new_total
+  
+    def welcome
+        if @player.bankroll.wallet >= @cost
+puts "......................................................................................"
+puts "......................................................................................"
+puts "....................               .....        ....            ......................"  
+puts "..........................   ...........  ..............   ..........................."
+puts "..........................   ...........      ..........   ..........................."
+puts "..........................   ...........  ..............   ..........................."
+puts "..........................   ...........       .........   ..........................."
+puts "......................................................................................"
+puts "......................................................................................"
+seperator
+puts"Cost for initial play is $100, would you like to try your luck? (y/n)"
+        case gets.strip
+        when "y"
+          new_balance = @player.bankroll.minus_from_wallet(@cost)
+          puts "YOUR BALANCE IS: $#{new_balance}"
+        else
+          return
+        end
+      else
+        puts "BETCH, YOU IS BROKE. SO NAW"
+        exit
+      end
     end
-    total
+    def start_game
+      puts "WELCOME TO THE THUNDAH' DOME!!, #{@player.name}!"
+      puts
+      puts 
+      puts
+      choice
+    end
+  
+    def choice
+      puts "MAKE YOUR CHOICE, PEASANT."
+      seperator
+      puts "1) ROCK!"
+      seperator
+      puts "2) PAPER!!"
+      seperator
+      puts "3) SCISSORS!!!"
+      seperator
+      puts "4) Exit"
+      seperator
+      @choice = gets.to_i
+      case @choice
+      when 1
+        puts "YOU CHOSE- ROCK!"
+        rock_case
+      when 2
+        puts "YOU CHOSE-- PAPER!!"
+        paper_case
+      when 3
+        puts "YOU CHOSE--- SCISSORS!!!"
+        scissors_case
+      when 4
+        puts "BYE FELICIA!"
+        return
+    
+      else
+        puts "YOURE REALLY GOOD AT THIS, ARENT YOU? (hint: pick a number)"
+        start_game
+      end
+      choice
+    end
+  
+    def computer_choice
+        random = rand(1..3)
+    end
+  
+    def rock_case
+      #computer_choice
+      case computer_choice
+      when 1
+        puts "COMPUTER CHOSE- ROCK!"
+        puts "TIE!"
+        puts "TRY AGAIN."
+      when 2
+        puts "COMPUTER CHOSE-- PAPER!!"
+        puts "YOU LOST! OUCH!"
+      else
+        puts "COMPUTER CHOSE--- SCISSORS!!!"
+        puts "YOU WON!!"
+        puts "YOUR WINNINGS: #{@winnings += @win_amt}"
+        puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
+      end  
+    end
+  
+    def paper_case
+        #computer_choice
+        case computer_choice
+        when 1
+          puts "COMPUTER CHOSE- ROCK!"
+          puts "YOU WON!!"
+          puts "YOUR WINNINGS: #{@winnings += @win_amt}"
+          puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"      
+        when 2
+          puts "COMPUTER CHOSE-- PAPER!!"
+          puts "TIE!"
+          puts "TRY AGAIN."
+        else
+          puts "COMPUTER CHOSE--- SCISSORS!!!"
+          puts "YOU LOST! OUCH!"
+        end  
+      end
+  
+    def scissors_case
+        #computer_choice
+        case computer_choice
+        when 1
+          puts "COMPUTER CHOSE- ROCK!"
+          puts "YOU LOST! OUCH!"
+          
+        when 2
+          puts "COMPUTER CHOSE-- PAPER!!"
+          puts "YOU WON!!"
+          puts "YOUR WINNINGS: #{@winnings += @win_amt}"
+          puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
+        else
+          puts "COMPUTER CHOSE--- SCISSORS!!!"
+          puts "TIE!"
+          puts "TRY AGAIN."
+        end  
+      end
+  
   end
-end  
-
-
-
-
-
-
-
-
-# def tet_game ()
-#   puts "Welcome to the Tet-Table."
-#   roll
-#   end
   
-#   def roll
-#     @die1 = 1 + rand(6)
-#     @die2 = 1 + rand(6) 
-#   end
-  
-#   def show_dice
-#     print "Die1: ", @die1, " Die2:", @die2
-#   end
-  
-#   def show_sum
-#     print "Sum of dice is ", @die1 + @die2, ".\n"
-#   end 
 
-#  d = Dice.new
-#  d.show_dice
-#  puts
-#  d.show_sum
+
+
+ 

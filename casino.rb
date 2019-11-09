@@ -14,6 +14,20 @@ require_relative 'rps'
 require_relative 'deck'
 require_relative 'dice'
 
+
+
+class Player
+  attr_accessor :name, :bankroll
+
+  def initialize(name)
+    @name = name
+    @min_amount = 100
+    @max_amount = 1000
+    start_amount = rand(@min_amount..@max_amount)
+    @bankroll = Wallet.new(start_amount)
+  end
+end
+
 class Wallet
   attr_accessor :wallet
 
@@ -27,18 +41,6 @@ class Wallet
 
   def minus_from_wallet(amount)
     @wallet -= amount;
-  end
-end
-
-class Player
-  attr_accessor :name, :bankroll
-
-  def initialize(name)
-    @name = name
-    @min_amount = 100
-    @max_amount = 1000
-    start_amount = rand(@min_amount..@max_amount)
-    @bankroll = Wallet.new(start_amount)
   end
 end
 
@@ -71,7 +73,10 @@ class Casino
   end
 
   def start_casino
-    puts "Welcome to the Casino!"
+    puts "||...........................||"
+    puts "||   WELCOME TO THE CASINO   ||"
+    puts "||...........................||"
+    puts 
     new_player
     welcome_method
   end
@@ -102,13 +107,19 @@ class Casino
       case user_game_choice
       when 1
         game = RockPaperScissors.new(@playersList.playerList[select_player])
+        game.welcome #in each game make sure these are not there
         game.start_game()
+        welcome_method()
       when 2
         game = Dice.new(@playersList.playerList[select_player])
+        game.welcome
         game.start_game()
+        welcome_method()
       when 3
         game = Roulette.new(@playersList.playerList[select_player])
+        game.welcome
         game.start_game()
+        welcome_method()
       when 4
         new_player
       when 5
@@ -119,15 +130,20 @@ class Casino
 
   def menu_options
     @playersList.list_wallet
+    puts "........................"
+    puts "....CASINO MAIN LOBY...."
+    puts "........................"
+    puts
     puts "What Game would you like to play?"
     puts "\n"
     puts "1) Rock Paper Scissors"
-    puts "2) Highs / Lows"
+    puts "2) Tet"
     puts "3) Roulette"
     puts "4) New Player"
     puts "5) Quit"
   end
 end
+
 
 casino = Casino.new
 casino.start_casino
