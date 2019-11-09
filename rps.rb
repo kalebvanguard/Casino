@@ -7,7 +7,9 @@ class RockPaperScissors
     @player = player
     @cost = 100
     @win_amt = 200
+    @lose_amt = 150
     @winnings = 0
+    @lost = 0
   end
 
   def welcome
@@ -65,64 +67,81 @@ class RockPaperScissors
       @player.bankroll.add_to_wallet(@cost)
       start_game
     end
-    choice
+
+    if @player.bankroll.wallet >= @cost
+      choice
+    elsif @player.bankroll.wallet >= 0
+      puts "You don't have enough monies :("
+      return
+      return
+    else
+      puts "You lost all your money, go home loser."
+      exit
+    end
   end
 
   def computer_choice
     random = rand(1..3)
   end
 
+  def lose
+    puts "Computer chose: Paper"
+    puts "You loose $150!!"
+    @lost += @lose_amt
+    @player.bankroll.minus_from_wallet(@lose_amt)
+    if @player.bankroll.wallet >= 0
+      puts "New amount in wallet: $#{@player.bankroll.wallet}"
+    else @player.bankroll.wallet <= 0
+      puts "New amount in wallet: $0"
+    end
+  end
+
+  def win
+    puts "Computer chose: Scissors"
+    puts "You win $200!!"
+    @winnings += @win_amt
+    puts "New amount in wallet: $#{@player.bankroll.add_to_wallet(@win_amt)}"
+  end
+
+  def tie
+    puts "Computer chose: Rock"
+    puts "Tie!"
+    puts "Try again"
+  end
+
   def rock_case
     computer_choice
     case computer_choice
     when 1
-      puts "Computer chose: Rock"
-      puts "Tie!"
-      puts "Try again"
+      tie
     when 2
-      puts "Computer chose: Paper"
-      puts "You loose!!"
+      lose
     else
-      puts "Computer chose: Scissors"
-      puts "You win!!"
-      puts "Your winnings: $#{@winnings += @win_amt}"
-      puts "New amount in wallet: $#{@player.bankroll.add_to_wallet(@winnings)}"
+      win
     end  
   end
 
   def paper_case
-    computer_choice
+  
     case computer_choice
     when 1
-      puts "Computer chose: Rock"
-      puts "You win!!"
-      puts "Your winnings: #{@winnings += @win_amt}"
-      puts "New amount in wallet: $#{@player.bankroll.add_to_wallet(@winnings)}"
+      win
     when 2
-      puts "Computer chose: Paper"
-      puts "Tie!"
-      puts "Try again"
+      tie
     else
-      puts "Computer chose: Scissors"
-      puts "You loose!!"
+      lose
     end
   end
 
   def scissors_case
-    computer_choice
+  
     case computer_choice
     when 1
-      puts "Computer chose: Rock"
-      puts "You loose!!"
+      lose
     when 2
-      puts "Computer chose: Paper"
-      puts "You Win!!"
-      puts "Your winnings: #{@winnings += @win_amt}"
-      puts "New amount in wallet: $#{@player.bankroll.add_to_wallet(@winnings)}"
+      win
     else
-      puts "Computer chose: Scissors"
-      puts "Tie!"
-      puts "Try again"
+      tie
     end
   end
 

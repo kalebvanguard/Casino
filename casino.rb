@@ -22,7 +22,7 @@ class Player
   def initialize(name)
     @name = name
     @min_amount = 100
-    @max_amount = 1000
+    @max_amount = 500
     start_amount = rand(@min_amount..@max_amount)
     @bankroll = Wallet.new(start_amount)
   end
@@ -108,10 +108,11 @@ class Casino
       @current_player = @playersList.playerList[select_player]
       case user_game_choice
       when 1
-        game = RockPaperScissors.new(@playersList.playerList[select_player])
-        # game.welcome #in each game make sure these are not there
+        game = RockPaperScissors.new(@current_player)
+        game.welcome # I need to call the welcome method first so my game works the right way
+        #in each game make sure these are not there
         random_event
-        game.start_game
+        #game.start_game # calling the start method for my game screws up the order
         # welcome_method
       when 2
         game = Dice.new(@playersList.playerList[select_player])
