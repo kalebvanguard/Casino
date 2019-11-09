@@ -18,8 +18,11 @@ class RockPaperScissors
         new_balance = @player.bankroll.minus_from_wallet(@cost)
         puts "Your new balance is: $#{new_balance}"
         choice
+      elsif user_input == "n"
+        puts "See ya"
       else
-        puts "k bye"
+        puts "Hmm.. had too many drinks? Lets try that again:"
+        welcome
       end
     else
       puts "You don't have enough monies :("  
@@ -60,6 +63,7 @@ class RockPaperScissors
       puts "Goodbye!"
     else
       puts "Try again, (hint: pick a number)"
+      @player.bankroll.add_to_wallet(@cost)
       welcome
     end
     

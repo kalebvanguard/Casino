@@ -81,12 +81,6 @@ class Casino
     welcome_method
   end
 
-  # def return_to_casino
-  #   puts "Welcome back to the Casino!"
-  #   access_player = PlayerList.new
-  #   welcome_method
-  # end
-  # <<<this doesn't really work
 
   def new_player
     puts "Please input a player name: "
@@ -111,6 +105,7 @@ class Casino
     while true
       menu_options
       user_game_choice = gets.to_i
+      @current_player = @playersList.playerList[select_player]
       case user_game_choice
       when 1
         game = RockPaperScissors.new(@playersList.playerList[select_player])
@@ -127,6 +122,8 @@ class Casino
         game.welcome
         game.start_game()
         welcome_method()
+        game = RockPaperScissors.new(@current_player)
+        random_event
         game.start_game
       # when 2   -----have question on these, want to make sure wont break your code. 
       #   game = Dice.new(@playersList.playerList[select_player])
@@ -149,13 +146,30 @@ class Casino
     puts "........................"
     puts
     puts "What Game would you like to play?"
-    puts "\n"
+    puts 
     puts "1) Rock Paper Scissors"
     puts "2) Tet"
     puts "3) Roulette"
     puts "4) New Player"
     puts "5) Quit"
   end
+
+  def random_event
+    event = rand(1..8)
+    case event
+    when 1, 2, 3 
+      puts
+    when 4, 5
+      puts "You got robbed by a stripper!! (lose $50)"
+      @current_player.bankroll.minus_from_wallet(50)
+    when 6
+      puts "A drunk lottery winner is feeling generous! (win $300)"
+      @current_player.bankroll.add_to_wallet(300)
+    else
+      puts "You have been given a pet sloth for extra luck and moral support"
+    end
+  end
+
 end
 
 
