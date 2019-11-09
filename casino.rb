@@ -109,9 +109,10 @@ class Casino
       case user_game_choice
       when 1
         game = RockPaperScissors.new(@playersList.playerList[select_player])
-        game.welcome #in each game make sure these are not there
-        game.start_game()
-        welcome_method()
+        # game.welcome #in each game make sure these are not there
+        random_event
+        game.start_game
+        # welcome_method
       when 2
         game = Dice.new(@playersList.playerList[select_player])
         game.welcome

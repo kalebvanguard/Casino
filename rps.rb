@@ -12,7 +12,7 @@ class RockPaperScissors
 
   def welcome
     if @player.bankroll.wallet >= @cost
-      puts "Cost to play is $100, would you like to try your luck? (y/n)"
+      puts "Initial cost to play is $100, would you like to try your luck? (y/n)"
       user_input = gets.strip
       if user_input == "y"
         new_balance = @player.bankroll.minus_from_wallet(@cost)
@@ -32,17 +32,17 @@ class RockPaperScissors
   def start_game
     puts "Welcome to Rock Paper Scissors, #{@player.name}!"
     puts
-    welcome
+    # welcome
+    choice
   end
 
   def choice
-    puts "FIRST GAME Make your choice:"
+    puts "Make your choice:"
     
     puts "1) Rock"
     puts "2) Paper"
     puts "3) Scissors"
     puts "4) Back to main menu"
-    puts "5) Exit"
     puts
     @choice = gets.to_i
     case @choice
@@ -58,15 +58,14 @@ class RockPaperScissors
     when 4
       # go_back = Casino.new
       # go_back.start_casino #<< works to take you back but it completely starts game over with new wallet and new player
-      puts "Ok, back to main menu it is"
-    when 5
-      puts "Goodbye!"
+      puts "Ok, back to the main menu it is"
+      return
     else
-      puts "Try again, (hint: pick a number)"
+      puts "Try again, (hint: pick a number 1-4)"
       @player.bankroll.add_to_wallet(@cost)
-      welcome
+      start_game
     end
-    
+    choice
   end
 
   def computer_choice
@@ -86,7 +85,7 @@ class RockPaperScissors
     else
       puts "Computer chose: Scissors"
       puts "You win!!"
-      puts "Your winnings: #{@winnings += @win_amt}"
+      puts "Your winnings: $#{@winnings += @win_amt}"
       puts "New amount in wallet: $#{@player.bankroll.add_to_wallet(@winnings)}"
     end  
   end
