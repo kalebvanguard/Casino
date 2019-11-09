@@ -10,7 +10,7 @@
 # Player's bankroll goes up and down with wins and losses
 # Ability to move to and from games
 
-require_relative 'card' 
+require_relative 'rps' 
 require_relative 'deck'
 require_relative 'dice'
 
@@ -36,7 +36,7 @@ class Player
   def initialize(name)
     @name = name
     @min_amount = 100
-    @max_amount = 1000000
+    @max_amount = 1000
     start_amount = rand(@min_amount..@max_amount)
     @bankroll = Wallet.new(start_amount)
   end
@@ -90,7 +90,7 @@ class Casino
       selected_player = gets.strip.to_i
       return selected_player - 1
     else
-      return 0
+      return 0 #references @playerList array index
     end
     
   end
@@ -101,9 +101,9 @@ class Casino
       user_game_choice = gets.to_i
       case user_game_choice
       when 1
-        game = Card.new(@playersList.playerList[select_player])
+        game = RockPaperScissors.new(@playersList.playerList[select_player])
         game.start_game()
-      when 2 #JOSHS GAME
+      when 2
         game = Dice.new(@playersList.playerList[select_player])
         game.start_game()
       when 3
@@ -121,8 +121,8 @@ class Casino
     @playersList.list_wallet
     puts "What Game would you like to play?"
     puts "\n"
-    puts "1) Card"
-    puts "2) Tet"
+    puts "1) Rock Paper Scissors"
+    puts "2) Highs / Lows"
     puts "3) Roulette"
     puts "4) New Player"
     puts "5) Quit"
