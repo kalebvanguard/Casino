@@ -103,8 +103,8 @@ class Casino
       when 1
         game = Card.new(@playersList.playerList[select_player])
         game.start_game()
-      when 2
-        game = Hi_low.new(@playersList.playerList[select_player])
+      when 2 #JOSHS GAME
+        game = Dice.new(@playersList.playerList[select_player])
         game.start_game()
       when 3
         game = Roulette.new(@playersList.playerList[select_player])
@@ -121,12 +121,8 @@ class Casino
     @playersList.list_wallet
     puts "What Game would you like to play?"
     puts "\n"
-<<<<<<< HEAD
-    puts "1) card"
-=======
     puts "1) Card"
->>>>>>> 228c4996d1044874c6119ae6732431b02957ef7b
-    puts "2) Highs / Lows"
+    puts "2) Tet"
     puts "3) Roulette"
     puts "4) New Player"
     puts "5) Quit"
@@ -134,9 +130,5 @@ class Casino
 end
 
 casino = Casino.new
-<<<<<<< HEAD
-casino.start_casino
-=======
 casino.start_casino
 
->>>>>>> 228c4996d1044874c6119ae6732431b02957ef7b
