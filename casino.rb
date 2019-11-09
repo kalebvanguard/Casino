@@ -14,15 +14,17 @@ require_relative 'rps'
 require_relative 'deck'
 require_relative 'dice'
 
-
+def seperator
+  puts
+end
 
 class Player
   attr_accessor :name, :bankroll
 
   def initialize(name)
     @name = name
-    @min_amount = 1
-    @max_amount = 10000
+    @min_amount = 100
+    @max_amount = 500
     start_amount = rand(@min_amount..@max_amount)
     @bankroll = Wallet.new(start_amount)
   end
@@ -76,13 +78,13 @@ class Casino
     puts
     puts
     puts
-    puts "||                           ...........................                          ||"
-    puts "||................................................................................||"
-    puts "||................................................................................||"
-    puts "||                              WELCOME TO THE CASINO                             ||"
-    puts "||................................................................................||"
-    puts "||................................................................................||"
-    puts "||                           ...........................                          ||"
+    puts "||                              ...........................                              ||"
+    puts "||.......................................................................................||"
+    puts "||.......................................................................................||"
+    puts "||                                 WELCOME TO THE CASINO                                 ||"
+    puts "||.......................................................................................||"
+    puts "||.......................................................................................||"
+    puts "||                              ...........................                              ||"
     puts 
     new_player
     welcome_method
@@ -115,10 +117,12 @@ class Casino
       @current_player = @playersList.playerList[select_player]
       case user_game_choice
       when 1
-        game = RockPaperScissors.new(@playersList.playerList[select_player])
-        game.welcome #in each game make sure these are not there
-        game.start_game()
-        welcome_method()
+        game = RockPaperScissors.new(@current_player)
+        game.welcome # I need to call the welcome method first so my game works the right way
+        #in each game make sure these are not there
+        random_event
+        #game.start_game # calling the start method for my game screws up the order
+        # welcome_method
       when 2
         game = Dice.new(@playersList.playerList[select_player])
         game.welcome
@@ -147,28 +151,27 @@ class Casino
   end
 
   def menu_options
-    puts
-    puts
-    puts "  .............                                                      ............."
-    puts "  ................................................................................"
-    puts "  ................................................................................"
-    puts "  .............               *** CASINO MAIN LOBY ***               ............."
-    puts "  ................................................................................"
-    puts "  ................................................................................"
-    puts "  .............                                                      ............."
-   @playersList.list_wallet 
-    puts 
-    puts "                         What Game would you like to play?                          "
-    puts 
-    puts "                             1) Rock Paper Scissors"
-    puts
-    puts "                             2) Tet"
-    puts
-    puts "                             3) Roulette"
-    puts
-    puts "                             4) New Player"
-    puts
-    puts "                             5) Leave the Casino"
+    seperator
+    seperator
+    seperator
+    puts "                               |||*** CASINO MAIN LOBY ***|||                             "                                        
+    seperator
+    puts "  .............      .............       .............     .............     ............."
+    puts "  .............      .............       .............     .............     ............."
+    puts "  |    1)     |      .     2)    .       .     3)    .     .    4)     .     .    5)     ."
+    puts "  |   Rock    |      .    Tet    .       . Roulette  .     .    New    .     .   EXIT    ."
+    puts "  |   paper   |      .           .       .           .     .   Player  .     .  CASINO   ."
+    puts "  |  Scissors |      .           .       .           .     .           .     .           ."       
+    puts "  |           |      .           .       .           .     .           .     .           ."
+    puts "  .............      .............       .............     .............     ............."        
+    puts "  .............      .............       .............     .............     ............."
+    seperator
+    puts "                              What Game would you like to play?                           "
+   @playersList.list_wallet
+  seperator
+  seperator
+  seperator
+  seperator  
   end
 
   def random_event
