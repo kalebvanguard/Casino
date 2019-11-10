@@ -10,6 +10,7 @@
 # Player's bankroll goes up and down with wins and losses
 # Ability to move to and from games
 
+require "pry"
 require_relative 'rps' 
 require_relative 'deck'
 require_relative 'dice'
@@ -63,9 +64,12 @@ class PlayerList
       id += 1
     end
   end
+  # def clear_players
+  #   @playerList.clear
+  # end
   def list_wallet
     @playerList.each do |player|
-      puts "#{player.name}'s balance is: $#{player.bankroll.wallet}"
+      puts "     ..... #{player.name}'s balance is: $#{player.bankroll.wallet} .....     "
     end
   end
 end
@@ -100,24 +104,31 @@ class Casino
 
   def new_player
     puts
-    puts "Please input a player name: "
+    puts "           Please input a player name:           "
+    puts
     puts
     player_name = gets.strip.to_s
     player = Player.new(player_name)
     @playersList.addPlayer(player)
   end
 
+  # def clear_all_players
+  #   @playersList.playerList.clear_players
+  #   exit
+  # end
+
   def select_player
     if @playersList.playerList.length > 1
-      puts "Which player would like to play?"
+      puts "      Which player would like to play?      "
       @playersList.list_players
       selected_player = gets.strip.to_i
-      selected_player - 1
+      return selected_player - 1
     else
-      0 
+      return 0 
       #references @playerList array index
     end
   end
+
   
   def welcome_method
     while true
@@ -148,12 +159,14 @@ class Casino
       when 4
         new_player
       when 5
-       game = Fight_cat.new(@playersList.playerList[select_player])
+        game = Fight_cat.new(@playersList.playerList[select_player])
         game.welcome
         game.start_game()
         welcome_method()
-    when 6
-       exit
+      when 6
+        # @playersList.playerList.clear
+        # binding.pry
+        exit
     end
   end
 end
@@ -162,7 +175,7 @@ end
     seperator
     seperator
     seperator
-    puts "                                                     |||*** CASINO MAIN LOBY ***|||                                      "                                        
+    puts "                                                     |||*** CASINO MAIN LOBBY ***|||                                      "                                        
     seperator
     puts "             .............      .............       .............     .............     .............     ............."
     puts "             .............      .............       .............     .............     .............     ............."
@@ -188,13 +201,13 @@ end
     when 1, 2, 3 
       puts
     when 4, 5
-      puts "You got robbed by a stripper!! (lose $50)" #I freaking love this
+      puts "-------       You got robbed by a stripper!! (lose $50)       -------" #I freaking love this
       @current_player.bankroll.minus_from_wallet(50)
     when 6
-      puts "A drunk lottery winner is feeling generous! (win $300)"
+      puts "-------       A drunk lottery winner is feeling generous! (win $300)       -------"
       @current_player.bankroll.add_to_wallet(300)
     else
-      puts "You have been given a pet sloth for extra luck and moral support"
+      puts "-------     You have been given a pet sloth for extra luck and moral support     -------"
     end
   end
 end
