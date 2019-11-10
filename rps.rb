@@ -27,7 +27,7 @@ class RockPaperScissors
         puts
         puts "              Your new balance is: $#{new_balance}           "
         puts
-        choice
+        start_game
       elsif user_input == "n"
         puts
         puts "       BYE!       "

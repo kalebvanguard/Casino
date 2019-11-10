@@ -164,6 +164,8 @@ class Casino
         game.start_game()
         welcome_method()
       when 6
+
+      when 7
         # @playersList.playerList.clear
         # binding.pry
         exit
@@ -187,6 +189,7 @@ end
     puts "             .............      .............       .............     .............     .............     ............."        
     puts "             .............      .............       .............     .............     .............     ............."
     seperator
+    puts "              7) Slots          "
     puts "                                                   What Game would you like to play?                                      "
    @playersList.list_wallet
   seperator
