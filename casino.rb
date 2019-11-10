@@ -14,7 +14,9 @@ require_relative 'rps'
 require_relative 'deck'
 require_relative 'dice'
 
-
+def seperator
+  puts
+end
 
 class Player
   attr_accessor :name, :bankroll
@@ -73,9 +75,16 @@ class Casino
   end
 
   def start_casino
-    puts "||...........................||"
-    puts "||   WELCOME TO THE CASINO   ||"
-    puts "||...........................||"
+    puts
+    puts
+    puts
+    puts "||                              ...........................                              ||"
+    puts "||.......................................................................................||"
+    puts "||.......................................................................................||"
+    puts "||                                 WELCOME TO THE CASINO                                 ||"
+    puts "||.......................................................................................||"
+    puts "||.......................................................................................||"
+    puts "||                              ...........................                              ||"
     puts 
     new_player
     welcome_method
@@ -142,18 +151,27 @@ class Casino
   end
 
   def menu_options
-    @playersList.list_wallet
-    puts "........................"
-    puts "....CASINO MAIN LOBY...."
-    puts "........................"
-    puts
-    puts "What Game would you like to play?"
-    puts 
-    puts "1) Rock Paper Scissors"
-    puts "2) Tet"
-    puts "3) Roulette"
-    puts "4) New Player"
-    puts "5) Quit"
+    seperator
+    seperator
+    seperator
+    puts "                               |||*** CASINO MAIN LOBY ***|||                             "                                        
+    seperator
+    puts "  .............      .............       .............     .............     ............."
+    puts "  .............      .............       .............     .............     ............."
+    puts "  |    1)     |      .     2)    .       .     3)    .     .    4)     .     .    5)     ."
+    puts "  |   Rock    |      .    Tet    .       . Roulette  .     .    New    .     .   EXIT    ."
+    puts "  |   paper   |      .           .       .           .     .   Player  .     .  CASINO   ."
+    puts "  |  Scissors |      .           .       .           .     .           .     .           ."       
+    puts "  |           |      .           .       .           .     .           .     .           ."
+    puts "  .............      .............       .............     .............     ............."        
+    puts "  .............      .............       .............     .............     ............."
+    seperator
+    puts "                              What Game would you like to play?                           "
+   @playersList.list_wallet
+  seperator
+  seperator
+  seperator
+  seperator  
   end
 
   def random_event
@@ -162,7 +180,7 @@ class Casino
     when 1, 2, 3 
       puts
     when 4, 5
-      puts "You got robbed by a stripper!! (lose $50)"
+      puts "You got robbed by a stripper!! (lose $50)" #I freaking love this
       @current_player.bankroll.minus_from_wallet(50)
     when 6
       puts "A drunk lottery winner is feeling generous! (win $300)"
