@@ -157,6 +157,7 @@ class Casino
 end
 
   def menu_options
+    system("clear")
     seperator
     seperator
     seperator

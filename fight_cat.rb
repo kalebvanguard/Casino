@@ -12,14 +12,14 @@ class Fight_cat
   
     def welcome
       system("clear")
-        @player.bankroll.wallet >= @cost
+      @player.bankroll.wallet >= @cost
 seperator
 seperator
 seperator        
-puts "......................................................................................  ...   ... "
+puts "......................................................................................  ...   ..."
 puts "........................ ............   .............................................  ...   ... "
-puts "...................  ..  ..........  ...............................................  ...   ...  "
-puts "..................       ........  ...       .........     .....           ........  ...   ...  ."  
+puts ".................... ..  ..........  ...............................................  ...   ...  "
+puts ".................. o  O   .......  ...         .......     .....            .......  ...   ...  ."  
 puts "......................           .....   ............   .   ........   ...........  ...   ...  .."
 puts "......................  /FIGHT/ ......   ...........   ...   .......   ..........  ...   ...  ..."
 puts "......................           .....   ..........   .....   ......   .........  ...   ...  ...."
@@ -27,32 +27,79 @@ puts "...................... ..  ... ..  ...       .....             .....   ...
 puts ".....................  ..  ... ... ...........................................  ...   ...  ......"
 puts ".............................................................................  ...   ...  ......."
 seperator
-puts "                   This isn't for pampered house-cats or weak alley-cats. 
-                                Meow-some, puuurfect, paw-tastic."
-puts "                                     $5000 per play                                  "  
-seperator     
+puts "    This isn't for pampered house-cats or weak alley-cats. Meow-some, puuurfect, paw-tastic."
 seperator
-    end
-   
-    def start_game
-        new_balance = @player.bankroll.minus_from_wallet(@cost)
-        puts "YOUR BALANCE IS: $#{new_balance}                  "
-        seperator
-        seperator
-      choice
-    end
-  
-    def choice
+seperator
 puts "                                 press enter to continue"
 gets
 system("clear")
 seperator
 seperator
 seperator
-puts "........................................................................................"
-puts "........................................................................................"
-puts "........................................................................................"
 seperator
+seperator
+  puts "......................................................................................."
+  puts "................................                        ..............................."
+  puts "........................ ......  This                    .............................."
+  puts "...................  ..  ......       is your            .............................."
+  puts ".................. o  O  .......              FIGHT-CAT ..............................."  
+  puts "....................     .............................................................."
+  puts "....................      ......   ...................................................."
+  puts "................... /Mrow/ ...   ......................................................"
+  puts "..................           ....  ...................................................."
+  puts "..................            ..   ...................................................."
+  puts "..................             .  ....................................................."
+  puts "..................                ....................................................."
+  puts "......................................................................................."
+  seperator
+  puts "                           press enter to continue"
+  gets
+system("clear")
+seperator
+seperator
+seperator
+  puts "......................................................................................."
+  puts "................................                        ..............................."
+  puts ".................... ... ......  Your                    .............................."
+  puts "...................  ..  ......       Rival is the       .............................."
+  puts ".................. []  {} ......         EVIL CYBER-CAT ..............................."  
+  puts "...................   ,   ............................................................."
+  puts "....................      ......   ...................................................."
+  puts ".................../*Derp*/ ...   ....................................................."
+  puts "..................           ....  ...................................................."
+  puts "..................    .        ..   ..................................................."
+  puts "..................   ...       .  ....................................................."
+  puts "..................  ......       ......................................................"
+  puts "......................................................................................."
+  seperator
+  puts "                             press enter to continue"
+  gets
+system("clear")
+    end
+   
+    def start_game
+    seperator
+    seperator
+    seperator
+    puts "                       Your Fight-Cat cannot lose 3 battles."
+    seperator
+    seperator
+    seperator
+    seperator
+    seperator
+    puts "                             press enter to continue"
+      choice
+    end
+  
+    def choice
+      gets
+      system("clear")
+      new_balance = @player.bankroll.minus_from_wallet(@cost)
+      puts "YOUR BALANCE IS: $#{new_balance}                  "
+      puts "......................................................................................."
+      puts "......................................................................................."
+      seperator
+      seperator
       puts "                              WHAT'S YOUR CHOICE?                                 "
       seperator
       puts "                                 1) ROLL ()                                       "
@@ -79,7 +126,7 @@ seperator
         puts "...................................................................  ....  ....  ........"
         seperator
         seperator
-        puts "                             FIGHT-CAT: ROLLS! ()                                "
+        puts "                              FIGHT-CAT: ROLLS! ()                                "
         roll_case
         seperator
       when 2
@@ -99,14 +146,19 @@ seperator
         puts "...................................................................  ....  ....  ........"
         seperator
         seperator
-        puts "                               FIGHT-CAT: SCRATCHES! ///                          "
+        puts "                              FIGHT-CAT: SCRATCHES! ///                          "
         scratch_case 
         seperator
       when 4
         seperator
+        seperator  
+        puts "                                    BYE FELICIA!                                   "
         seperator
-        puts "                                BYE FELICIA!                                 "
         seperator
+        seperator
+        seperator
+        puts "                               press enter to continue                             "
+        gets
         seperator
         seperator
         return
@@ -126,16 +178,6 @@ seperator
       #computer_choice
       case computer_choice
       when 1
-        puts ".................................................. ... ........................................."
-        puts "........................ ............   ......... ....  ........................................."
-        puts "...................  ..  ..........  ...........        ........................................."
-        puts ".................. o  O  ........  ............         ........................................."  
-        puts "......................           .................                  ............................."
-        puts "......................  /FIGHT/ .................   ...   .......   ............................."
-        puts "......................           ...............   .....   ......   ............................."
-        puts "...................... ..  ... ..  .............................................................."
-        puts ".....................  ..  ... ... .............................................................."
-        puts "................................................................................................."
         seperator
         seperator
         puts "                             EVIL FIGHT-CAT: ROLLS! ()                            "
@@ -151,23 +193,25 @@ seperator
         puts answers.sample                                                                              
         puts "........................................................................................." 
         puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
+        puts "                               press enter to continue"
       when 2
         seperator
         seperator
-        puts "                            EVIL CYBER-CAT: POUNCES ~                         "
+        puts "                             EVIL CYBER-CAT: POUNCES ~                         "
         seperator
         seperator
         puts "                                 YOU LOST! OUCH!                              "
         seperator
         puts "........................................................................................."
-        answers = ["(COMMENTATOR: You lost by POUNCE? HAHAHAHAAHA!", " Really rolled right into that one." , "I don't know what that technique is called, I just know the sound it makes when it takes a man's life. ", ]
+        answers = ["(COMMENTATOR: You lost by POUNCE? HAHAHAHAAHA!", " Really rolled right into that one." , "I don't know what the technique's called, I just know the sound it makes when it takes a man's life. ", ]
         puts answers.sample    
         puts "........................................................................................."
         puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
+        puts "                              press enter to continue"
       else
         seperator
         seperator
-        puts "                        EVIL CYBER_CAT: SCRATCHES! ///                   "
+        puts "                           EVIL CYBER_CAT: SCRATCHES! ///                   "
         seperator
         seperator
         puts "                                   YOU WON!!                                  "
@@ -179,6 +223,8 @@ seperator
         puts answers.sample    
         puts "........................................................................................."
         puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
+        puts "                             press enter to continue"
+
       end  
     end
   
@@ -188,7 +234,7 @@ seperator
         when 1
           seperator
           seperator
-          puts "                          EVIL CYBER_CAT: ROLLS! ()                            "
+          puts "                           EVIL CYBER_CAT: ROLLS! ()                            "
           seperator
           seperator
           puts "                                 YOU WON!!                                    "
@@ -200,10 +246,11 @@ seperator
           puts answers.sample    
           puts "........................................................................................."
           puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"      
+          puts "                            press enter to continue"
         when 2
           seperator
           seperator   
-          puts "                          EVIL CYBER_CAT: POUNCES ~                              "
+          puts "                            EVIL CYBER_CAT: POUNCES ~                              "
           seperator
           seperator
           puts "                                    TIE!                                      "
@@ -212,14 +259,16 @@ seperator
           puts "                                 TRY AGAIN.                                   "
           seperator
           puts "........................................................................................."
-          answers = ["COMMENTATOR: Cyber_Cat has come out with a fuuuuuuurious attack." , "Why are you like this?",  "COMMENTATOR: someone should show them how to do something besides Pounce.",]
+          answers = ["COMMENTATOR: Cyber_Cat has come out with a fuuuuuuurious attack." , "COMMENTATOR: Why are you like this?",  "COMMENTATOR: someone should show them how to do something besides Pounce.",]
           puts answers.sample    
           puts "........................................................................................."
           puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
+          puts "                            press enter to continue"
+
         else
           seperator
           seperator
-          puts "                           EVIL CYBER_CAT: SCRATCHES! ///                      "
+          puts "                            EVIL CYBER_CAT: SCRATCHES! ///                      "
           seperator
           seperator
           puts "                                 YOU LOST! OUCH!                              "
@@ -229,6 +278,8 @@ seperator
           puts answers.sample    
           puts "........................................................................................."
           puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
+          puts "                             press enter to continue"
+
         end  
       end
   
@@ -238,7 +289,7 @@ seperator
         when 1
           seperator
           seperator
-          puts "                           EVIL CYBER_CAT: ROLLS! ()                           "
+          puts "                              EVIL CYBER_CAT: ROLLS! ()                           "
           seperator
           seperator 
           puts "                                 YOU LOST! OUCH!                              "
@@ -248,11 +299,13 @@ seperator
           puts answers.sample    
           puts "........................................................................................."
           puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
+          puts "                              press enter to continue"
+
           
         when 2
           seperator
           seperator
-          puts "                            EVIL CYBER_CAT: POUNCES! ~                       "
+          puts "                               EVIL CYBER_CAT: POUNCES! ~                       "
           seperator
           seperator
           puts "                                     YOU WON!!                                "
@@ -264,10 +317,12 @@ seperator
           puts answers.sample    
           puts "........................................................................................."
           puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
+          puts "                              press enter to continue"
+
         else
           seperator
           seperator
-          puts "                            EVIL CYBER_CAT: SCRACTCHES! ///                   "
+          puts "                             EVIL CYBER_CAT: SCRACTCHES! ///                   "
           seperator
           seperator
           puts "                                         TIE!                                 "
@@ -280,6 +335,8 @@ seperator
           puts answers.sample    
           puts "........................................................................................."
           puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
+          puts "                                press enter to continue"
+
         end  
       end
   
@@ -288,4 +345,29 @@ seperator
 
 
 
- 
+  # seperator
+  # puts "...................................................... .................  ................................."
+  # puts "........................ ............   ......... ....  ..............  ..................................."
+  # puts "...................  ..  ..........  ...........        ............  .................... ... ............"
+  # puts ".................. o  O  ........  ............[]   []  ..........  ......................     ............"  
+  # puts "......................           ....................              ...............   .....  O o..........."
+  # puts "......................  /FIGHT/ .....................              ..............  .....    ..............."
+  # puts "......................           .................... .. ...... ... ..............  ..      ..............."
+  # puts "...................... ..  ... ..  .................. .. ...... ... ..............   .     . .............."
+  # puts ".....................  ..  ... ... ................................................        .. ............."
+  # puts "..........................................................................................................."
+  # seperator
+  
+
+  # seperator
+  # puts ".........................................................................................................."
+  # puts "........................ ................................................................................."
+  # puts "...................  ..  ................................................................................."
+  # puts ".................. o  O  ................................................................................."  
+  # puts "....................     ........   ......................................................................"
+  # puts "....................      ......    ......................................................................"
+  # puts "................... /Meow/  ...   ......................................................................."
+  # puts "..................            ...  ......................................................................."
+  # puts "..................             .. ........................................................................"
+  # puts "...............................   ........................................................................"
+  # seperator
