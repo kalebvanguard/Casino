@@ -92,7 +92,9 @@ class Casino
 
 
   def new_player
+    puts
     puts "Please input a player name: "
+    puts
     player_name = gets.strip.to_s
     player = Player.new(player_name)
     @playersList.addPlayer(player)
@@ -154,13 +156,13 @@ class Casino
     seperator
     seperator
     seperator
-    puts "                               |||*** CASINO MAIN LOBY ***|||                             "                                        
+    puts "                               |||*** CASINO MAIN LOBBY ***|||                            "                                        
     seperator
     puts "  .............      .............       .............     .............     ............."
     puts "  .............      .............       .............     .............     ............."
     puts "  |    1)     |      .     2)    .       .     3)    .     .    4)     .     .    5)     ."
     puts "  |   Rock    |      .    Tet    .       . Roulette  .     .    New    .     .   EXIT    ."
-    puts "  |   paper   |      .           .       .           .     .   Player  .     .  CASINO   ."
+    puts "  |   Paper   |      .           .       .           .     .   Player  .     .  CASINO   ."
     puts "  |  Scissors |      .           .       .           .     .           .     .           ."       
     puts "  |           |      .           .       .           .     .           .     .           ."
     puts "  .............      .............       .............     .............     ............."        
