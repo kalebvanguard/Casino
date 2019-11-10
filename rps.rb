@@ -7,7 +7,7 @@ class RockPaperScissors
     @player = player
     @cost = 100
     @win_amt = 200
-    @lose_amt = 150
+    @lose_amt = 300
     @winnings = 0
     @lost = 0
   end
@@ -98,8 +98,6 @@ class RockPaperScissors
     elsif @player.bankroll.wallet >= 0
       puts "........ You didn't have enough monies to play again :( ........"
       puts
-      return
-      return
     else
       puts "........ You lost all your money, go home loser ........"
       puts
