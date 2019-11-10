@@ -13,6 +13,7 @@
 require_relative 'rps' 
 require_relative 'deck'
 require_relative 'dice'
+require_relative 'fight_cat'
 
 def seperator
   puts
@@ -75,6 +76,7 @@ class Casino
   end
 
   def start_casino
+    system("clear")
     seperator
     seperator
     seperator
@@ -85,8 +87,8 @@ class Casino
     puts "||.............................................................................................................................||"
     puts "||.............................................................................................................................||"
     puts "||                                                          WELCOME                                                            ||"
-    puts "||                                                           TO THE                                                             ||"
-    puts "||                                                        Sunset CASINO                                                         ||"
+    puts "||                                                           TO THE                                                            ||"
+    puts "||                                                        Sunset CASINO                                                        ||"
     puts "||.............................................................................................................................||"
     puts "||                                    ....................................................                                     ||"
     puts "||                                                ...........................                                                  ||"
@@ -141,19 +143,18 @@ class Casino
         game = RockPaperScissors.new(@current_player)
         random_event
         game.start_game
-      # when 2   -----have question on these, want to make sure wont break your code. 
-      #   game = Dice.new(@playersList.playerList[select_player])
-      #   game.start_game
-      # when 3
-      #   game = Roulette.new(@playersList.playerList[select_player])
-      #   game.start_game
       when 4
         new_player
       when 5
-        exit
-      end
+       game = Fight_cat.new(@playersList.playerList[select_player])
+        game.welcome
+        game.start_game()
+        welcome_method()
+    when 6
+       exit
     end
   end
+end
 
   def menu_options
     seperator
@@ -164,8 +165,8 @@ class Casino
     puts "             .............      .............       .............     .............     .............     ............."
     puts "             .............      .............       .............     .............     .............     ............."
     puts "             |    1)     |      .     2)    .       .     3)    .     .    4)     .     .    5)     .     .    6)     ."
-    puts "             |   Rock    |      .    Tet    .       . Roulette  .     .    New    .     .   EXIT    .     .  Sunset   ."
-    puts "             |   paper   |      .           .       .           .     .   Player  .     .  CASINO   .     .  LOUNGE   ."
+    puts "             |   Rock    |      .    Tet    .       . Roulette  .     .    New    .     .  /FIGHT/  .     .   EXIT    ."
+    puts "             |   paper   |      .           .       .           .     .   Player  .     .    CAT    .     .  CASINO   ."
     puts "             |  Scissors |      .           .       .           .     .           .     .           .     .           ."       
     puts "             |           |      .           .       .           .     .           .     .           .     .           ."
     puts "             .............      .............       .............     .............     .............     ............."        
@@ -194,8 +195,14 @@ class Casino
       puts "You have been given a pet sloth for extra luck and moral support"
     end
   end
-
 end
+
+# when 2
+#   game = Dice.new(@playersList.playerList[select_player])
+#   game.welcome
+#   game.start_game()
+#   welcome_method()
+# end
 
 
 casino = Casino.new
