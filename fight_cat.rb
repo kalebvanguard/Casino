@@ -137,7 +137,8 @@ seperator
         puts "                                   TRY AGAIN.                                 "
         seperator
         puts "........................................................................................."
-        puts "                                                                               "
+        answers = ["COMMENTATOR: ...Uh, is it Fight-Cat or litte bitch-cat?", "OMMENTATOR: Tie... Wow. I'm glad I'm missing the Bg bang Theory for this." ,]
+        puts answers.sample                                                                              
         puts "........................................................................................." 
         puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
       when 2
@@ -149,7 +150,8 @@ seperator
         puts "                                 YOU LOST! OUCH!                              "
         seperator
         puts "........................................................................................."
-        puts "                                                                                "
+        answers = ["(COMMENTATOR: You lost by POUNCE? HAHAHAHAAHA!", " Really rolled right into that one." ,]
+        puts answers.sample    
         puts "........................................................................................."
         puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
       else
@@ -163,7 +165,8 @@ seperator
         seperator
         puts "YOUR WINNINGS: #{@winnings += @win_amt}"
         puts "........................................................................................."
-        puts "                                                                                "
+        answers = ["(COMMENTATOR: Scratching away at that debt huh?." , "OMMENTATOR: Fight-Cat is out here with a fuuuury." ,]
+        puts answers.sample    
         puts "........................................................................................."
         puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
       end  
@@ -183,7 +186,8 @@ seperator
           seperator
           puts "YOUR WINNINGS: #{@winnings += @win_amt}"
           puts "........................................................................................."
-          puts "                                                                                "
+          answers = ["COMMENTATOR: Fight-Cat really is a fan of limpbizkit" , "OMMENTATOR: Really, rolled into victory?", "Roll-tide!!", ]
+          puts answers.sample    
           puts "........................................................................................."
           puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"      
         when 2
@@ -198,7 +202,8 @@ seperator
           puts "                                 TRY AGAIN.                                   "
           seperator
           puts "........................................................................................."
-          puts "                                                                               "
+          answers = ["COMMENTATOR: Cyber_Cat has come out with a fuuuuuuurious attack." , "COMMENTATOR: someone should show them how to do something besides Pounce.",]
+          puts answers.sample    
           puts "........................................................................................."
           puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
         else
@@ -210,7 +215,8 @@ seperator
           puts "                                 YOU LOST! OUCH!                              "
           seperator
           puts "........................................................................................."
-          puts "                                                                               "
+          answers = ["COMMENTATOR: Cyber_Cat cutting 'em down out here!'." , "COMMENTATOR: Ohhhh lawd, oh gerry! Get 'em out of there!",]
+          puts answers.sample    
           puts "........................................................................................."
           puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
         end  
@@ -228,7 +234,8 @@ seperator
           puts "                                 YOU LOST! OUCH!                              "
           seperator
           puts "........................................................................................."
-          puts "                                                                               "
+          answers = ["COMMENTATOR: Cyber_Cat with the Righteous roll!" , "COMMENTATOR: Maybe its time for Fight-Cat to retire.",]
+          puts answers.sample    
           puts "........................................................................................."
           puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
           
@@ -243,7 +250,8 @@ seperator
           seperator
           puts "YOUR WINNINGS: #{@winnings += @win_amt}"
           puts "........................................................................................."
-          puts "                                                                                "
+          answers = ["COMMENTATOR: --sports jargon and catch phrase--" , "COMMENTATOR: Cyber_Cat must've gotten hacked!",]
+          puts answers.sample    
           puts "........................................................................................."
           puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
         else
@@ -258,7 +266,8 @@ seperator
           puts "                                      TRY AGAIN.                              "
           seperator
           puts "........................................................................................."
-          puts "                                                                                "
+          answers = ["COMMENTATOR: Sorry I was looking at my phone, what happened?" , "COMMENTATOR: For a single Cat, sure got tied down." ,]          
+          puts answers.sample    
           puts "........................................................................................."
           puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
         end  
