@@ -164,7 +164,8 @@ class Casino
         game.start_game()
         welcome_method()
       when 6
-
+        game = Slots.new(@playersList.playerList[select_player])
+        game.welcome
       when 7
         # @playersList.playerList.clear
         # binding.pry
