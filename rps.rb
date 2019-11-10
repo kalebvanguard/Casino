@@ -17,6 +17,7 @@ class RockPaperScissors
       puts
       puts
       puts "------------- ~ Initial cost to play is $100 ~ -------------" 
+      puts
       puts "---------~ Would you like to try your luck? (y/n) ~ --------"
       puts
       puts
@@ -25,17 +26,31 @@ class RockPaperScissors
       if user_input == "y"
         new_balance = @player.bankroll.minus_from_wallet(@cost)
         puts
-        puts "              Your new balance is: $#{new_balance}           "
+        puts "                  Your new balance is: $#{new_balance}           "
         puts
+        puts "                   press enter to continue"
+        puts
+        puts
+        puts
+        puts
+        puts
+        gets
+        system("clear")
         start_game
       elsif user_input == "n"
         puts
         puts "       BYE!       "
         puts
+        puts
+        puts
+        system("clear")
       else
         puts
-        puts "       Hmm.. had too many drinks? Lets try that again:       "
+        puts "       Hmm... had too many drinks? Lets try that again:       "
         puts
+        puts
+        puts
+        system("clear")
         welcome
       end
     else
@@ -53,7 +68,7 @@ class RockPaperScissors
     puts
     puts "||.........................................................................||"
     puts
-    #puts
+    puts
     choice
   end
 
@@ -64,7 +79,8 @@ class RockPaperScissors
 
   def choice
     puts
-    puts "                  Make your choice:              "
+    puts "              Make your choice:              "
+    puts
     puts
     puts "............ 1) ROCK ............................."
     puts "............ 2) PAPER ............................"
@@ -73,6 +89,7 @@ class RockPaperScissors
     puts
     puts
     @choice = gets.to_i
+    system("clear")
     case @choice
     when 1
       puts
