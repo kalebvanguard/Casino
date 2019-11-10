@@ -16,16 +16,16 @@ class Fight_cat
 seperator
 seperator
 seperator        
-puts "............................................................................  ...   ... "
-puts ".............. ............   .............................................  ...   ... "
-puts ".........  ..  ..........  ...............................................  ...   ...  "
-puts "........       ........  ...       .........     .....           ........  ...   ...  ."  
-puts "............           .....   ............   .   ........   ...........  ...   ...  .."
-puts "............  /FIGHT/ ......   ...........   ...   .......   ..........  ...   ...  ..."
-puts "............           .....   ..........   .....   ......   .........  ...   ...  ...."
-puts "............ ..  ... ..  ...       .....             .....   ........  ...   ...  ....."
-puts "...........  ..  ... ... ...........................................  ...   ...  ......"
-puts "...................................................................  ...   ...  ......."
+puts "......................................................................................  ...   ... "
+puts "........................ ............   .............................................  ...   ... "
+puts "...................  ..  ..........  ...............................................  ...   ...  "
+puts "..................       ........  ...       .........     .....           ........  ...   ...  ."  
+puts "......................           .....   ............   .   ........   ...........  ...   ...  .."
+puts "......................  /FIGHT/ ......   ...........   ...   .......   ..........  ...   ...  ..."
+puts "......................           .....   ..........   .....   ......   .........  ...   ...  ...."
+puts "...................... ..  ... ..  ...       .....             .....   ........  ...   ...  ....."
+puts ".....................  ..  ... ... ...........................................  ...   ...  ......"
+puts ".............................................................................  ...   ...  ......."
 seperator
 puts "                   This isn't for pampered house-cats or weak alley-cats. 
                                 Meow-some, puuurfect, paw-tastic."
@@ -126,6 +126,16 @@ seperator
       #computer_choice
       case computer_choice
       when 1
+        puts ".................................................. ... ........................................."
+        puts "........................ ............   ......... ....  ........................................."
+        puts "...................  ..  ..........  ...........        ........................................."
+        puts ".................. o  O  ........  ............         ........................................."  
+        puts "......................           .................                  ............................."
+        puts "......................  /FIGHT/ .................   ...   .......   ............................."
+        puts "......................           ...............   .....   ......   ............................."
+        puts "...................... ..  ... ..  .............................................................."
+        puts ".....................  ..  ... ... .............................................................."
+        puts "................................................................................................."
         seperator
         seperator
         puts "                             EVIL FIGHT-CAT: ROLLS! ()                            "
@@ -137,7 +147,7 @@ seperator
         puts "                                   TRY AGAIN.                                 "
         seperator
         puts "........................................................................................."
-        answers = ["COMMENTATOR: ...Uh, is it Fight-Cat or litte bitch-cat?", "OMMENTATOR: Tie... Wow. I'm glad I'm missing the Bg bang Theory for this." ,]
+        answers = [ "COMMENTATOR: I'd like to thank our sponsor redbull; it give you energy to tollerate things." , "COMMENTATOR: ...Uh, is it Fight-Cat or litte bitch-cat?", "OMMENTATOR: Tie... Wow. I'm glad I'm missing the Bg bang Theory for this." ,]
         puts answers.sample                                                                              
         puts "........................................................................................." 
         puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
@@ -150,7 +160,7 @@ seperator
         puts "                                 YOU LOST! OUCH!                              "
         seperator
         puts "........................................................................................."
-        answers = ["(COMMENTATOR: You lost by POUNCE? HAHAHAHAAHA!", " Really rolled right into that one." ,]
+        answers = ["(COMMENTATOR: You lost by POUNCE? HAHAHAHAAHA!", " Really rolled right into that one." , "I don't know what that technique is called, I just know the sound it makes when it takes a man's life. ", ]
         puts answers.sample    
         puts "........................................................................................."
         puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
@@ -165,7 +175,7 @@ seperator
         seperator
         puts "YOUR WINNINGS: #{@winnings += @win_amt}"
         puts "........................................................................................."
-        answers = ["(COMMENTATOR: Scratching away at that debt huh?." , "OMMENTATOR: Fight-Cat is out here with a fuuuury." ,]
+        answers = ["(COMMENTATOR: Scratching away at that debt huh?." , "Has anyone seen my phone? ", "OMMENTATOR: Fight-Cat is out here with a fuuuury." ,]
         puts answers.sample    
         puts "........................................................................................."
         puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
@@ -186,7 +196,7 @@ seperator
           seperator
           puts "YOUR WINNINGS: #{@winnings += @win_amt}"
           puts "........................................................................................."
-          answers = ["COMMENTATOR: Fight-Cat really is a fan of limpbizkit" , "OMMENTATOR: Really, rolled into victory?", "Roll-tide!!", ]
+          answers = ["COMMENTATOR: Fight-Cat really is a fan of limpbizkit" , "That was as unexpected and as bad as the Happening." , "OMMENTATOR: Really, rolled into victory?", "Roll-tide!!", ]
           puts answers.sample    
           puts "........................................................................................."
           puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"      
@@ -202,7 +212,7 @@ seperator
           puts "                                 TRY AGAIN.                                   "
           seperator
           puts "........................................................................................."
-          answers = ["COMMENTATOR: Cyber_Cat has come out with a fuuuuuuurious attack." , "COMMENTATOR: someone should show them how to do something besides Pounce.",]
+          answers = ["COMMENTATOR: Cyber_Cat has come out with a fuuuuuuurious attack." , "Why are you like this?",  "COMMENTATOR: someone should show them how to do something besides Pounce.",]
           puts answers.sample    
           puts "........................................................................................."
           puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
