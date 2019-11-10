@@ -22,7 +22,7 @@ class Player
   def initialize(name)
     @name = name
     @min_amount = 100
-    @max_amount = 500
+    @max_amount = 1000
     start_amount = rand(@min_amount..@max_amount)
     @bankroll = Wallet.new(start_amount)
   end
