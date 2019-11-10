@@ -8,8 +8,6 @@ class RockPaperScissors
     @cost = 100
     @win_amt = 200
     @lose_amt = 300
-    @winnings = 0
-    @lost = 0
   end
 
   def welcome
@@ -151,7 +149,6 @@ class RockPaperScissors
     puts
     puts
     puts
-    @lost += @lose_amt
     @player.bankroll.minus_from_wallet(@lose_amt)
     if @player.bankroll.wallet >= 0
       puts
@@ -171,7 +168,6 @@ class RockPaperScissors
     puts
     puts
     puts
-    @winnings += @win_amt
     puts "           New amount in wallet: $#{@player.bankroll.add_to_wallet(@win_amt)}          "
     puts  
     puts

@@ -165,7 +165,7 @@ class Casino
         game.start_game()
         welcome_method()
       when 6
-        game = Slots.new(@playersList.playerList[select_player])
+        game = Slots.new(@current_player)
         game.welcome
       when 7
         # @playersList.playerList.clear
@@ -185,14 +185,14 @@ end
     puts "             .............      .............       .............     .............     .............     ............."
     puts "             .............      .............       .............     .............     .............     ............."
     puts "             |    1)     |      .     2)    .       .     3)    .     .    4)     .     .    5)     .     .    6)     ."
-    puts "             |   Rock    |      .    Tet    .       . Roulette  .     .    New    .     .  /FIGHT/  .     .   EXIT    ."
-    puts "             |   paper   |      .           .       .           .     .   Player  .     .    CAT    .     .  CASINO   ."
+    puts "             |   Rock    |      .    Tet    .       . Roulette  .     .    New    .     .  /FIGHT/  .     .   SLOTS    ."
+    puts "             |   paper   |      .           .       .           .     .   Player  .     .    CAT    .     .           ."
     puts "             |  Scissors |      .           .       .           .     .           .     .           .     .           ."       
     puts "             |           |      .           .       .           .     .           .     .           .     .           ."
     puts "             .............      .............       .............     .............     .............     ............."        
     puts "             .............      .............       .............     .............     .............     ............."
     seperator
-    puts "              7) Slots          "
+    puts "              7) Exit          "
     puts "                                                   What Game would you like to play?                                      "
    @playersList.list_wallet
   seperator

@@ -1,8 +1,9 @@
 require "pry"
 
 class Slots
+  
   def initialize(player)
-    @winnings
+    @player = player
     @cost = 25
     @win_amt = rand(5..50)
     @jackpot = 1000
@@ -36,13 +37,16 @@ class Slots
     puts
     puts "||.........................................................................||"
     puts
-    puts "    ------------- ~ ~ Welcome to SLOTS, #{@player.name}! ~ ~ ------------    "
+    puts "       ------------- ~ ~ Welcome to SLOTS, #{@player.name}! ~ ~ ------------    "
     puts
     puts "||.........................................................................||"
     puts
     puts
     puts
-    puts "                        press enter to continue"
+    puts "                       press enter to pull the lever!"
+    puts
+    puts
+    puts
     gets
     system("clear")
     pull_lever
@@ -56,7 +60,7 @@ class Slots
       value_2 = rand(1..5)
       value_3 = rand(1..5)
 
-      if value_1 == value_2 == value_3
+      if value_1 == value_2 && value_3
         jackpot
         play_again
       elsif value_1 == value_2 || value_1 == value_3 || value_2 == value_3
@@ -83,32 +87,45 @@ class Slots
     puts "Want to play again? (y/n)"
     case gets.strip
     when "y"
+      system("clear")
       pull_lever
-    else
+    when "n"
+      system("clear")
       puts "BYE!!"
       return
+    else
+      puts "Try that again"
+      play_again
     end
   end
 
   def win
-    puts
-    puts "Congrats, you WIN $#{@win_amt}!!"
+    puts 
+    puts "                Congrats, you WIN $#{@win_amt}!!                                   "
     puts
     @player.bankroll.add_to_wallet(@win_amt)
+    puts "                New amount in wallet: $#{@player.bankroll.add_to_wallet(@win_amt)} "
+    puts
+    puts
   end
 
   def lose
     puts 
-    puts "Oh no!! You LOST !!"
+    puts "                  Oh no!! You LOST!!"
+    puts
+    puts
   end
 
   def jackpot
     puts
-    puts "  WOW! JACKPOT!!!"
+    puts "                  WOW! JACKPOT!!!"
     puts
-    puts "You WIN $#{@jackpot}!!"
+    puts "                  You WIN $#{@jackpot}!!"
     puts
     @player.bankroll.add_to_wallet(@jackpot)
+    puts "              New amount in wallet: $#{@player.bankroll.add_to_wallet(@jackpot)}"
+    puts
+    puts
   end
 
 
