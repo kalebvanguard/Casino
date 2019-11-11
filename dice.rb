@@ -1,3 +1,6 @@
+require "pry"
+require "colorize"
+
 def seperator 
 puts
 end
@@ -5,27 +8,14 @@ end
 class Dice
     def initialize(player)
       @player = player
-      @cost = 1500
-      @win_amt = 1000
-      @winnings = 0
+      @cost = 0
+      @win_amount =500
+      @winnings = 500
     end
   
     def welcome
         @player.bankroll.wallet >= @cost
-puts "......................................................................................"
-puts "......................................................................................"
-puts "....................               .....       ....              ....................."  
-puts "..........................   ...........  ..............   ..........................."
-puts "..........................   ...........      ..........   ..........................."
-puts "..........................   ...........  ..............   ..........................."
-puts "..........................   ...........       .........   ..........................."
-puts "......................................................................................"
-puts "......................................................................................"
-seperator
-puts "       A game of Soldiers and Kings. As in War, you either win, or you lose.          "
-puts "                                     $1,500 per play                                  "  
-seperator     
-seperator
+
     end
    
     def start_game
@@ -37,208 +27,50 @@ seperator
     end
   
     def choice
-      puts "                             | WHAT'S YOUR CHOICE? |                            "
       seperator
-      puts "                                 1) ROCK!                                       "
       seperator
-      puts "                                 2) PAPER!!                                     "
+      puts "............................................................................................................"
+      puts "                             WELCOME TO THE ATM, PLEASE PRESS 1 THEN ENTER.                                "
+      puts "............................................................................................................"
+      puts "                                           | Add funds  |                                                  "
       seperator
-      puts "                                 3) SCISSORS!!!                                 "
+      puts "                                              1) $500                                                        "
+      puts "............................................................................................................"
       seperator
-      puts "                                 4) LEAVE THE TABLE                             "
+      puts "............................................................................................................"
       seperator
-      puts "................................................................................"
-      puts "                         ...............................                      "
-      puts "................................................................................"
       seperator
-      @choice = gets.to_i 
+@choice = gets.to_i 
       case @choice
       when 1
-        seperator
-        puts "................................................................................"
-        seperator
-        puts "                             YOU CHOSE- ROCK!                                 "
-        rock_case
-        seperator
-      when 2
-        seperator
-        puts "................................................................................"
-        seperator
-        puts "                             YOU CHOSE-- PAPER!!                               "
-        paper_case
-        seperator
-      when 3
-        seperator
-        puts "................................................................................"
-        seperator
-        puts "                             YOU CHOSE--- SCISSORS!!!                          "
-        scissors_case
-        seperator
-      when 4
-        seperator
-        seperator
-        puts "                                BYE FELICIA!                                 "
-        seperator
-        seperator
-        seperator
+        # system("clear")
+        puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
         return
-    
       else
-        puts "          YOURE NOT REALLY GOOD AT THIS, ARENT YOU? (hint: pick a number)     "
+        puts "                  YOURE NOT REALLY GOOD AT THIS, ARENT YOU? (hint: pick a number)                          "
         welcome
       end
       choice
+      return
     end
   
-    def computer_choice
-        random = rand(1..3)
-    end
-  
-    def rock_case
-      #computer_choice
-      case computer_choice
-      when 1
-        seperator
-        seperator
-        puts "                             COMPUTER CHOSE- ROCK!                            "
-        seperator
-        seperator
-        puts "                                      TIE!                                    "
-        seperator
-        seperator
-        puts "                                   TRY AGAIN.                                 "
-        seperator
-        puts "................................................................................"
-        puts "                         ...............................                      "
-        puts "................................................................................"
-        puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
-      when 2
-        seperator
-        seperator
-        puts "                             COMPUTER CHOSE-- PAPER!!                         "
-        seperator
-        seperator
-        puts "                                 YOU LOST! OUCH!                              "
-        seperator
-        puts "................................................................................"
-        puts "                         ...............................                      "
-        puts "................................................................................"
-        puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
-      else
-        seperator
-        seperator
-        puts "                           COMPUTER CHOSE --- SCISSORS!!!                    "
-        seperator
-        seperator
-        puts "                                   YOU WON!!                                  "
-        seperator
-        seperator
-        puts "YOUR WINNINGS: #{@winnings += @win_amt}"
-        puts "................................................................................"
-        puts "                         ...............................                      "
-        puts "................................................................................"
-        puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
-      end  
-    end
-  
-    def paper_case
-        #computer_choice
-        case computer_choice
-        when 1
-          seperator
-          seperator
-          puts "                             COMPUTER CHOSE - ROCK                            "
-          seperator
-          seperator
-          puts "                                 YOU WON!!                                    "
-          seperator
-          seperator
-          puts "YOUR WINNINGS: #{@winnings += @win_amt}"
-          puts "................................................................................"
-          puts "                         ...............................                      "
-          puts "................................................................................"
-          puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"      
-        when 2
-          seperator
-          seperator
-          puts "                            COMPUTER CHOSE -- PAPER                          "
-          seperator
-          seperator
-          puts "                                    TIE!                                      "
-          seperator
-          seperator
-          puts "                                 TRY AGAIN.                                   "
-          seperator
-          puts "................................................................................"
-          puts "                         ...............................                      "
-          puts "................................................................................"
-          puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
-        else
-          seperator
-          seperator
-          puts "                             COMPUTER CHOSE --- SCISSORS                      "
-          seperator
-          seperator
-          puts "                                 YOU LOST! OUCH!                              "
-          seperator
-          puts "................................................................................"
-          puts "                         ...............................                      "
-          puts "................................................................................"
-          puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
-        end  
-      end
-  
-    def scissors_case
-        #computer_choice
-        case computer_choice
-        when 1
-          seperator
-          seperator
-          puts "                              COMPUTER CHOSE - ROCK                            "
-          seperator
-          seperator 
-          puts "                                 YOU LOST! OUCH!                              "
-          seperator
-          puts "..............................................................................."
-          puts "                         ...............................                      "
-          puts "..............................................................................."
-          puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
-          
-        when 2
-          seperator
-          seperator
-          puts "                             COMPUTER CHOSE -- PAPER!!                        "
-          seperator
-          seperator
-          puts "                                     YOU WON!!                                "
-          seperator
-          seperator
-          puts "YOUR WINNINGS: #{@winnings += @win_amt}"
-          puts "................................................................................"
-          puts "                         ...............................                      "
-          puts "................................................................................"
-          puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
-        else
-          seperator
-          seperator
-          puts "                             COMPUTER CHOSE --- SCISSORS!!!                   "
-          seperator
-          seperator
-          puts "                                         TIE!                                 "
-          seperator
-          seperator
-          puts "                                      TRY AGAIN.                              "
-          seperator
-          puts "................................................................................"
-          puts "                         ...............................                      "
-          puts "................................................................................"
-          puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
-        end  
-      end
-  
-  end
+end
+
   
 
-
+  # puts "......................................................................................"
+  # # puts "......................................................................................"
+  # puts "....................               .....       ....              ....................."  
+  # puts "..........................   ...........  ..............   ..........................."
+  # puts "..........................   ...........      ..........   ..........................."
+  # puts "..........................   ...........  ..............   ..........................."
+  # puts "..........................   ...........       .........   ..........................."
+  # puts "......................................................................................"
+  # puts "......................................................................................"
+  # seperator
+  # puts "       A game of Soldiers and Kings. As in War, you either win, or you lose.          "
+  # puts "                                     $1,500 per play                                  "  
+  # seperator     
+  # seperator
 
  
