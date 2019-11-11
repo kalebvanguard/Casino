@@ -182,25 +182,28 @@ end
     seperator
     seperator
     seperator
-    puts "                                                     |||*** CASINO MAIN LOBBY ***|||                                      "                                        
+    puts "                                                            |||*** CASINO MAIN LOBBY ***|||                                      "                                        
     seperator
-    puts "             .............      .............       .............     .............     .............     ............."
-    puts "             .............      .............       .............     .............     .............     ............."
-    puts "             |    1)     |      .     2)    .       .     3)    .     .    4)     .     .    5)     .     .    6)     ."
-    puts "             |   Rock    |      .    Tet    .       . Roulette  .     .    New    .     .  /FIGHT/  .     .   SLOTS    ."
-    puts "             |   paper   |      .           .       .           .     .   Player  .     .    CAT    .     .           ."
-    puts "             |  Scissors |      .           .       .           .     .           .     .           .     .           ."       
-    puts "             |           |      .           .       .           .     .           .     .           .     .           ."
-    puts "             .............      .............       .............     .............     .............     ............."        
-    puts "             .............      .............       .............     .............     .............     ............."
+    puts "             .............      .............       .............     .............     .............     .............     ____________ "
+    puts "             .............      .............       .............     .............     .............     .............    |     ||     |"
+    puts "             |    1)     |      .     2)    .       .     3)    .     .    4)     .     .    5)     .     .    6)     .    |     7)     |"
+    puts "             |   Rock    |      .    ATM    .       . Roulette  .     .    New    .     .  /FIGHT/  .     .   SLOTS   .    |    EXIT    |"
+    puts "             |   paper   |      . [][][][]  .       .           .     .   Player  .     .    CAT    .     .           .    |     ||     |"
+    puts "             |  Scissors |      . [][][][]  .       .           .     .           .     .           .     .           .    |     ||     |"       
+    puts "             |           |      .           .       .           .     .           .     .           .     .           .    |     ||     |"
+    puts "             .............      .............       .............     .............     .............     .............    |     ||     |"        
+    puts "             .............      .............       .............     .............     .............     .............    |_____||_____|"
     seperator
-    puts "              7) Exit          "
-    puts "                                                   What Game would you like to play?                                      "
+    seperator
+    puts "                                                           What Game would you like to play?                                      "
+   seperator
+   seperator
    @playersList.list_wallet
-  seperator
-  seperator
-  seperator
-  seperator  
+   seperator
+   seperator
+   seperator
+   seperator
+   seperator  
   end
 
   def random_event

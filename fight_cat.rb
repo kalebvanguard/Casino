@@ -5,15 +5,15 @@ end
 class Fight_cat
     def initialize(player)
       @player = player
-      @cost = 5000
-      @win_amt = 1000
+      @cost =500
+      @win_amt = 100
       @winnings = 0
     end
 
   
     def welcome
       system("clear")
-      @player.bankroll.wallet >= @cost
+      @player.bankroll.wallet >= @cost  
 seperator
 seperator
 seperator        
@@ -75,25 +75,34 @@ seperator
   gets
   system("clear")
     end
+
     def start_game
-    seperator
-    seperator
-    seperator
-    puts "                       Your Fight-Cat cannot lose 3 battles."
-    seperator
-    seperator
-    seperator
-    seperator
-    seperator
-    puts "                             press enter to continue"
-      choice
+      if @player.bankroll.wallet >= @cost
+        seperator
+        seperator
+        seperator
+        puts "             *roaring crowd, Howling cats, and the smell of blood*               "
+        puts "                             press enter to continue                            "
+         choice
+      else
+      seperator
+      seperator
+        puts "                     I'm sorry come back when you have money to play.           "  
+      seperator
+      puts "                             press enter to continue"
+      return  
     end
+  end
+
   
     def choice
       gets
       system("clear")
+      seperator
+      seperator
       new_balance = @player.bankroll.minus_from_wallet(@cost)
       puts "YOUR BALANCE IS: $#{new_balance}                  "
+      puts "......................................................................................."
       puts "......................................................................................."
       puts "......................................................................................."
       seperator
@@ -246,7 +255,7 @@ seperator
         puts "........................................................................................."
         seperator
         puts "                                press enter to continue                                 "
-      end  
+      end
     end
   
     def roll_case
@@ -299,7 +308,6 @@ seperator
         puts "........................................................................................."
         puts "NEW AMOUNT IN WALLET: $#{@player.bankroll.add_to_wallet(@winnings)}"
         puts "                             press enter to continue"
-
       end  
     end
   
