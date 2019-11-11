@@ -1,3 +1,5 @@
+require "colorize"
+
 def seperator 
 puts
 end
