@@ -15,6 +15,7 @@ require_relative 'rps'
 require_relative 'deck'
 require_relative 'dice'
 require_relative 'fight_cat'
+require_relative 'roulette'
 require_relative 'slots'
 
 def seperator
@@ -147,12 +148,7 @@ class Casino
         welcome_method()
       when 3
         game = Roulette.new(@playersList.playerList[select_player])
-        game.welcome
-        game.start_game()
-        welcome_method()
-        game = RockPaperScissors.new(@current_player)
-        random_event
-        game.start_game
+        game.start_game() #took out some calls here so my game will run correctly
       when 4
         new_player
       when 5
