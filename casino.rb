@@ -15,6 +15,7 @@ require_relative 'rps'
 require_relative 'deck'
 require_relative 'dice'
 require_relative 'fight_cat'
+require_relative 'roulette'
 require_relative 'slots'
 
 def seperator
@@ -115,11 +116,6 @@ class Casino
     @playersList.addPlayer(player)
   end
 
-  # def clear_all_players
-  #   @playersList.playerList.clear_players
-  #   exit
-  # end
-
   def select_player
     if @playersList.playerList.length > 1
       puts "      Which player would like to play?      "
@@ -135,17 +131,16 @@ class Casino
   
   def welcome_method
     while true
+      # @current_player = @playersList.playerList[select_player]
+      # random_event
       menu_options
       user_game_choice = gets.to_i
-      @current_player = @playersList.playerList[select_player]
       case user_game_choice
       when 1
-        game = RockPaperScissors.new(@current_player)
+        game = RockPaperScissors.new(@playersList.playerList[select_player])
         game.welcome # I need to call the welcome method first so my game works the right way
         #in each game make sure these are not there
-        random_event
         #game.start_game # calling the start method for my game screws up the order
-        # welcome_method
       when 2
         game = Dice.new(@playersList.playerList[select_player])
         game.welcome
@@ -153,12 +148,7 @@ class Casino
         welcome_method()
       when 3
         game = Roulette.new(@playersList.playerList[select_player])
-        game.welcome
-        game.start_game()
-        welcome_method()
-        game = RockPaperScissors.new(@current_player)
-        random_event
-        game.start_game
+        game.start_game() #took out some calls here so my game will run correctly
       when 4
         new_player
       when 5
@@ -177,8 +167,32 @@ class Casino
   end
 end
 
+# def random_event
+#   event = rand(1..8)
+#   case event
+#   when 1, 2, 3 
+#     puts
+#   when 4, 5
+#     puts
+#     puts
+#     puts "-------       You got robbed by a stripper!! (lose $50)       -------" #I freaking love this
+#     @current_player.bankroll.minus_from_wallet(50)
+#   when 6
+#     puts
+#     puts
+#     puts "-------       A drunk lottery winner is feeling generous! (win $300)       -------"
+#     @current_player.bankroll.add_to_wallet(300)
+#   else
+#     puts
+#     puts
+#     puts "-------     You have been given a pet sloth for extra luck and moral support     -------"
+#   end
+# end
+
   def menu_options
     system("clear")
+    puts
+    puts
     seperator
     seperator
     seperator
@@ -206,21 +220,6 @@ end
    seperator  
   end
 
-  def random_event
-    event = rand(1..8)
-    case event
-    when 1, 2, 3 
-      puts
-    when 4, 5
-      puts "-------       You got robbed by a stripper!! (lose $50)       -------" #I freaking love this
-      @current_player.bankroll.minus_from_wallet(50)
-    when 6
-      puts "-------       A drunk lottery winner is feeling generous! (win $300)       -------"
-      @current_player.bankroll.add_to_wallet(300)
-    else
-      puts "-------     You have been given a pet sloth for extra luck and moral support     -------"
-    end
-  end
 end
 
 # when 2

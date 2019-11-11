@@ -7,7 +7,7 @@ class RockPaperScissors
     @player = player
     @cost = 100
     @win_amt = 200
-    @lose_amt = 300
+    @lose_amt = 150
   end
 
   def welcome
@@ -49,6 +49,7 @@ class RockPaperScissors
         puts
         puts
         system("clear")
+        # @player.bankroll.add_to_wallet()
         welcome
       end
     else

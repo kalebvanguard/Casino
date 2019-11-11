@@ -1,3 +1,6 @@
+require "pry"
+require "colorize"
+
 def seperator 
 puts
 end
