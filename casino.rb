@@ -16,6 +16,7 @@ require_relative 'deck'
 require_relative 'dice'
 require_relative 'fight_cat'
 require_relative 'roulette'
+require_relative 'slots'
 
 def seperator
   puts
@@ -83,19 +84,21 @@ class Casino
   def start_casino
     system("clear")
     seperator
-    seperator
+    seperator 
     seperator
     puts "||                                                  ......................                                                     ||"
     puts "||                                                ...........................                                                  ||"
-    puts "||                                    ....................................................                                     ||" 
+    puts "||                                           ......................................                                            ||" 
     puts "||.............................................................................................................................||"
     puts "||.............................................................................................................................||"
     puts "||.............................................................................................................................||"
+    puts " ______________________________________________________________________________________________________________________________||"
     puts "||                                                          WELCOME                                                            ||"
     puts "||                                                           TO THE                                                            ||"
     puts "||                                                        Sunset CASINO                                                        ||"
     puts "||.............................................................................................................................||"
-    puts "||                                    ....................................................                                     ||"
+    puts "||.............................................................................................................................||"
+    puts "||                                              .................................                                              ||"
     puts "||                                                ...........................                                                  ||"
     puts 
     new_player
@@ -141,9 +144,7 @@ class Casino
         game = RockPaperScissors.new(@current_player)
         game.welcome # I need to call the welcome method first so my game works the right way
         #in each game make sure these are not there
-        random_event
         #game.start_game # calling the start method for my game screws up the order
-        # welcome_method
       when 2
         game = Dice.new(@playersList.playerList[select_player])
         game.welcome
@@ -165,14 +166,36 @@ class Casino
         game.start_game()
         welcome_method()
       when 6
+        game = Slots.new(@current_player)
+        game.welcome
+      when 7
         # @playersList.playerList.clear
         # binding.pry
         exit
     end
   end
 end
+def random_event
+  event = rand(1..8)
+  case event
+  when 1, 2, 3 
+    puts
+  when 4, 5
+    puts "-------       You got robbed by a stripper!! (lose $50)       -------" #I freaking love this
+    @current_player.bankroll.minus_from_wallet(50)
+  when 6
+    puts "-------       A drunk lottery winner is feeling generous! (win $300)       -------"
+    @current_player.bankroll.add_to_wallet(300)
+  else
+    puts "-------     You have been given a pet sloth for extra luck and moral support     -------"
+  end
+end
 
   def menu_options
+    system("clear")
+    puts
+    puts
+    random_event
     seperator
     seperator
     seperator
@@ -181,13 +204,14 @@ end
     puts "             .............      .............       .............     .............     .............     ............."
     puts "             .............      .............       .............     .............     .............     ............."
     puts "             |    1)     |      .     2)    .       .     3)    .     .    4)     .     .    5)     .     .    6)     ."
-    puts "             |   Rock    |      .    Tet    .       . Roulette  .     .    New    .     .  /FIGHT/  .     .   EXIT    ."
-    puts "             |   paper   |      .           .       .           .     .   Player  .     .    CAT    .     .  CASINO   ."
-    puts "             |  Scissors |      .           .       .           .     .           .     .           .     .           ."       
+    puts "             |   ROCK    |      .    Tet    .       . Roulette  .     .    New    .     .  /FIGHT/  .     .   SLOTS    ."
+    puts "             |   PAPER   |      .           .       .           .     .   Player  .     .    CAT    .     .           ."
+    puts "             |  SCISSORS |      .           .       .           .     .           .     .           .     .           ."       
     puts "             |           |      .           .       .           .     .           .     .           .     .           ."
     puts "             .............      .............       .............     .............     .............     ............."        
     puts "             .............      .............       .............     .............     .............     ............."
     seperator
+    puts "              7) Exit          "
     puts "                                                   What Game would you like to play?                                      "
    @playersList.list_wallet
   seperator
@@ -196,21 +220,6 @@ end
   seperator  
   end
 
-  def random_event
-    event = rand(1..8)
-    case event
-    when 1, 2, 3 
-      puts
-    when 4, 5
-      puts "-------       You got robbed by a stripper!! (lose $50)       -------" #I freaking love this
-      @current_player.bankroll.minus_from_wallet(50)
-    when 6
-      puts "-------       A drunk lottery winner is feeling generous! (win $300)       -------"
-      @current_player.bankroll.add_to_wallet(300)
-    else
-      puts "-------     You have been given a pet sloth for extra luck and moral support     -------"
-    end
-  end
 end
 
 # when 2
