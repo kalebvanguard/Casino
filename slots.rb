@@ -38,7 +38,7 @@ class Slots
     puts
     puts "||.........................................................................||"
     puts
-    puts "       ------------- ~ ~ Welcome to SLOTS, #{@player.name}! ~ ~ ------------    "
+    puts "       ------------- ~ ~ Welcome to SLOTS #{@player.name}! ~ ~ ------------    "
     puts
     puts "||.........................................................................||"
     puts
@@ -61,13 +61,34 @@ class Slots
       value_2 = rand(1..5)
       value_3 = rand(1..5)
 
-      if value_1 == value_2 && value_3
+      if value_1 == value_2 && value_1 == value_3 && value_2 == value_3
+        puts 
+        puts 
+        puts
+        puts "                 | #{value_1} |     | #{value_2} |     | #{value_3} |          "
+        puts 
+        puts
+        puts
         jackpot
         play_again
       elsif value_1 == value_2 || value_1 == value_3 || value_2 == value_3
+        puts 
+        puts 
+        puts
+        puts "                 | #{value_1} |     | #{value_2} |     | #{value_3} |          "
+        puts 
+        puts
+        puts
         win
         play_again
       else
+        puts 
+        puts 
+        puts
+        puts "                 | #{value_1} |     | #{value_2} |     | #{value_3} |          "
+        puts 
+        puts
+        puts
         lose
         play_again
       end

@@ -67,12 +67,11 @@ class Roulette
     puts "The winning even/odd is: #{@even_odd}"
     sleep(1)
     if @num_bet && @color_bet && @even_bet == @winning_number || @winning_color || @even_odd
-      @player.bankroll.add_to_wallet(@user_bet)
+      @player.bankroll.add_to_wallet(@user_bet * 2)
       puts "Congratulations! You guessed one or two right! You won $#{@user_bet * 2}"
     elsif @num_bet && @color_bet && @even_bet == @winning_number && @winning_color && @even_odd
-      @player.bankroll.add_to_wallet(@user_bet * 2)
-      puts "Congratulations! You guessed everything right! You won $#{@user_bet * 4}"
       @player.bankroll.add_to_wallet(@user_bet * 4)
+      puts "Congratulations! You guessed everything right! You won $#{@user_bet * 4}"
     elsif
       puts "Sorry, you lost!"
       @player.bankroll.minus_from_wallet(@user_bet)

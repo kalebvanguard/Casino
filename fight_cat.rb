@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 require "pry"
->>>>>>> f9cc5dbe185d069f569129089a1447eb688f6772
 require "colorize"
 
 def seperator 
